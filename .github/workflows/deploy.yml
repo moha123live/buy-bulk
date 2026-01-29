@@ -42,11 +42,11 @@ jobs:
       - name: Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          server: 46.202.161.53  # Direct IP, no ftp:// prefix
-          username: u731226648.mohankumar.cloud  # Correct username from image
+          server: ${{ secrets.HOSTINGER_HOST }}  # Direct IP, no ftp:// prefix
+          username: ${{ secrets.HOSTINGER_USER }} # Correct username from image
           password: ${{ secrets.HOSTINGER_PASS }}
           local-dir: ./dist/buy-bulk/
-          server-dir: /public_html/
+          server-dir: ${{ secrets.HOSTINGER_PATH }}
           protocol: ftp
           port: 21
           timeout: 120000
