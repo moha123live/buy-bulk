@@ -3,13 +3,8 @@ name: Angular CI/CD Deploy
 on:
   push:
     branches:
-      - master  # triggers on push to master
+      - master
   workflow_dispatch:
-    inputs:
-    environment:
-      description: 'Environment to deploy'
-      required: true
-      default: 'production'
 
 jobs:
   build-and-deploy:
@@ -17,20 +12,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build Angular App
-        run: npm run build
+        run: npm run build --prod
 
-      - name: Deploy to Hostinger via FTP
+      - name: FTP Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.HOSTINGER_HOST }}
@@ -38,5 +33,5 @@ jobs:
           password: ${{ secrets.HOSTINGER_PASS }}
           local-dir: ./dist/buy-bulk/
           server-dir: ${{ secrets.HOSTINGER_PATH }}
-          protocol: ftps
+          protocol: ftp
           dry-run: false
