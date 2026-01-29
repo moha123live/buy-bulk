@@ -22,7 +22,7 @@ export class AddProductComponent {
   editingProductId: string | null = null
   imageUrl: string | null = null;
   defaultImage: string = 'images/products/product-default.png';
-  unitsOptions: string[] = ["kg", "g", "l", "ml", "packs", "pcs", "units", "boxes", "bags"];
+  unitsOptions: string[] = ["kg", "g", "l", "ml", "packs", "pcs", "units", "boxs", "bags"];
   imageLoading: boolean = false;
   isSaved: boolean = false;
   existingImage: boolean = false;
@@ -38,7 +38,7 @@ export class AddProductComponent {
       text: ['', [Validators.maxLength(100)]],
       market_price: ['', [Validators.required, Validators.pattern(/^[+]?\d+(\.\d{1,2})?$/), Validators.max(999999.99)]],
       stock: ['', [Validators.maxLength(10)]],
-      units: ['', Validators.pattern(/^(kg|g|l|ml|packs|pcs|units|boxes|bags)$/)],
+      units: ['', Validators.pattern(/^(kg|g|l|ml|packs|pcs|units|boxs|bags)$/)],
       image: [null]
     });
   }

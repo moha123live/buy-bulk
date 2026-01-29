@@ -22,11 +22,11 @@
                         <td>
                             <img [src]="product.image || defaultImage" class="product-img" alt="Product Image">
                         </td>
-                        <td class="text-start">{{product.name}}</td>
-                        <td>₹ {{product.selling_price}}</td>
-                        <td>₹ {{product.market_price}}</td>
-                        <td>{{product.stock}} {{product.units}}</td>     
-                        <td>{{product.text}}</td>
+                        <td [title]="product.name.length > 35 ? product.name : ''">{{ product.name | slice:0:35 }} {{ product.name.length > 35 ? '...' : '' }} </td>
+                        <td>{{product.selling_price | currency:'INR'}}</td>
+                        <td>{{product.market_price | currency:'INR'}}</td>
+                        <td>{{product.stock}} {{product.units}}</td>
+                        <td [title]="product.text.length > 35 ? product.text : ''">{{ product.text | slice:0:35 }} {{ product.text.length > 35 ? '...' : '' }} </td>
                         <td><i class="fa fa-trash icon delete-icon" aria-hidden="true" (click)="deleteProduct(product?.id)"></i></td>
                         <td><i class="fa fa-pencil icon" aria-hidden="true" (click)="editProduct(product)"></i></td>
                       </tr>
