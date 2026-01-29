@@ -5,7 +5,7 @@ on:
     branches:
       - master  # triggers on push to master
   workflow_dispatch:
-  inputs:
+    inputs:
     environment:
       description: 'Environment to deploy'
       required: true
