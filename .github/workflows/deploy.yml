@@ -30,6 +30,6 @@ jobs:
           server: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USER }}
           password: ${{ secrets.HOSTINGER_PASS }}
-          local-dir: ./dist/buy_bulk
+          local-dir: ./dist/buy-bulk/
           server-dir: ${{ secrets.HOSTINGER_PATH }}
           dry-run: false
